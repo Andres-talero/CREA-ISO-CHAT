@@ -4,7 +4,7 @@
 from fastapi import APIRouter
 
 # Controllers
-from src.api.internal.openai import get_message, post_generate_vectors, post_create_vector, post_get_response, post_get_vector
+from src.api.internal.openai import get_message, post_generate_vectors, post_create_vector, post_create_vector_text, post_get_response, post_get_vector
 
 router = APIRouter()
 
@@ -23,6 +23,9 @@ def generate_vectors():
 async def create_vector(url, company):
     return await post_create_vector(url, company)
 
+@router.post("/create-vector-text")
+async def create_vector_text(text, url, company):
+    return await post_create_vector_text(text, url, company)
 
 @router.post("/get-response")
 async def get_response(request):

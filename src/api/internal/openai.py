@@ -28,7 +28,15 @@ async def post_create_vector(url, company):
         return response
     else:
         raise HTTPException(status_code=404, detail="Item not found")
+    
 
+async def post_create_vector_text(text, url, company):
+    if text:
+        response = save_vector(text, url, company)
+        return response
+    else:
+        raise HTTPException(status_code=404, detail="Item not found")
+    
 
 async def post_get_response(request):
     if request:
